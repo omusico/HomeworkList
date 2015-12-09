@@ -8,5 +8,5 @@
 
 
 而且，它不会像同类app一样，需要各种权限，推送各种广告
-## Let us enrich to it
+## Let us to enrichit
 本鶸渣渣，就抛砖引玉辣，希望我们能一起来完善它

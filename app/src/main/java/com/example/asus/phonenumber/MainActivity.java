@@ -34,7 +34,7 @@ public class MainActivity extends Activity {
         });
     }
 
-    //向List里添加内容
+    //向List里添加内容.
     public void getPerson() {
         UserDatabase userDatabase = new UserDatabase(MainActivity.this, "Homework.db", null, 2);
         SQLiteDatabase db = userDatabase.getWritableDatabase();

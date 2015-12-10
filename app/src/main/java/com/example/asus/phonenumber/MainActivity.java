@@ -4,10 +4,8 @@ import android.app.Activity;
 import android.content.Intent;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
-import android.widget.AdapterView;
 import android.widget.ListView;
 import android.widget.TextView;
 
@@ -16,14 +14,14 @@ import java.util.List;
 
 public class MainActivity extends Activity {
 
-    private List<Person> personList = new ArrayList<Person>();
+    private List<Homework> homeworkList = new ArrayList<Homework>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         this.getPerson();
-        PersonAdapter adapter = new PersonAdapter(MainActivity.this,R.layout.person_item,personList);
+        HomeworkAdapter adapter = new HomeworkAdapter(MainActivity.this,R.layout.homework_item, homeworkList);
         ListView listView = (ListView) findViewById(R.id.student_list);
         listView.setAdapter(adapter);
         TextView textView = (TextView) findViewById(R.id.main_create);
@@ -35,16 +33,18 @@ public class MainActivity extends Activity {
             }
         });
     }
+
+    //向List里添加内容
     public void getPerson() {
-        UserDatabase userDatabase = new UserDatabase(MainActivity.this, "Person.db", null, 2);
+        UserDatabase userDatabase = new UserDatabase(MainActivity.this, "Homework.db", null, 2);
         SQLiteDatabase db = userDatabase.getWritableDatabase();
-        Cursor cursor = db.query("Person",null,null,null,null,null,null,null);
+        Cursor cursor = db.query("Homework",null,null,null,null,null,null,null);
         if(cursor.moveToFirst()) {
             do {
-                String name = cursor.getString(cursor.getColumnIndex("name"));
-                String number = cursor.getString(cursor.getColumnIndex("number"));
-                Person person = new Person(name, number);
-                personList.add(person);
+                String time = cursor.getString(cursor.getColumnIndex("date"));
+                String work = cursor.getString(cursor.getColumnIndex("homework"));
+                Homework homework = new Homework("截至日期: " + time, "内容: " + work);
+                homeworkList.add(homework);
             } while (cursor.moveToNext());
         }
         cursor.close();

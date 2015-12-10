@@ -6,10 +6,10 @@ import android.database.sqlite.SQLiteOpenHelper;
 
 public class UserDatabase extends SQLiteOpenHelper {
 
-    public static final String CREATE_PRESON = "create table person ("
+    public static final String CREATE_HOMEWORK = "create table Homework ("
             + "id integer primary key autoincrement, "
-            + "name text, "
-            + "number text) ";
+            + "date text, "
+            + "homework text) ";
 
     private Context mContext;
 
@@ -20,7 +20,7 @@ public class UserDatabase extends SQLiteOpenHelper {
 
     @Override
     public void onCreate(SQLiteDatabase db) {
-        db.execSQL(CREATE_PRESON);
+        db.execSQL(CREATE_HOMEWORK);
     }
 
     @Override

@@ -12,6 +12,6 @@
         android:id="@+id/main_create"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="添加联系人"
+        android:text="添加作业"
         android:gravity="center"/>
 </LinearLayout>
